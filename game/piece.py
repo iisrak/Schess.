@@ -2,13 +2,14 @@ from game.helpers import Annotate, UnAnnotate
 from colorama import Fore
 
 Symbols = {
-        "r": "♜",
-        "n": "♞",
-        "b": "♝",
-        "q": "♛",
-        "k": "♚",
-        "p": "♟",
-    }
+    "r": "♜",
+    "n": "♞",
+    "b": "♝",
+    "q": "♛",
+    "k": "♚",
+    "p": "♟",
+}
+
 
 class Piece(object):
     def __init__(self, White: bool, Location: str, Initial: str):
@@ -18,7 +19,6 @@ class Piece(object):
         self.Initial = Initial
         self.Symbol = (Fore.RED if self.White == True else Fore.BLUE) + Symbols[Initial]
 
-    
     def Surroundings(self) -> list:
         y = UnAnnotate(self.Location)
         
@@ -36,7 +36,6 @@ class Piece(object):
         if not self.White:
             x.reverse()
         return x
-    
-    
+
     def __str__(self):
         return self.Initial

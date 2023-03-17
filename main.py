@@ -8,6 +8,7 @@ Board = Board()
 Game = Game(Board)
 
 if __name__ == "__main__":
+    system("clear")
     print("Created by @LaxionDev on replit.com. Still a W.I.P\n\n")
     Board.CreateBoard()
 
@@ -16,5 +17,4 @@ if __name__ == "__main__":
         
         if not Game.Move(input(Style.RESET_ALL + "\n\nMove: ")):
             input("Invalid move. Press 'enter' try again.")
-
         system("clear")

@@ -23,7 +23,6 @@ class Knight(Piece):
         for z in y:
             if z[0] < 0 or z[1] < 1 or z[0] > 7 or z[1] > 7:
                 y.remove(z)
-            elif self.Board.IsPiece(Annotate(z[0],z[1])) and self.Board.GetPiece(Annotate(z[0],z[1])).White == self.White:
-                y.remove(z)
-                
+            else:
+                y[y.index(z)] = Annotate(z[0],z[1])
         return y

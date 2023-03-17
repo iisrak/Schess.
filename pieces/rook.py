@@ -17,9 +17,6 @@ class Rook(Piece):
         while True:
             z[1] -= 1
             a = Annotate(z[0],z[1])
-            if self.Board.IsPiece(a):
-                if self.Board.GetPiece(a).White == self.White:
-                    break
             if z[1] >= 0:
                 y.append(a)
             else:
@@ -30,9 +27,6 @@ class Rook(Piece):
         while True:
             z[1] += 1
             a = Annotate(z[0],z[1])
-            if self.Board.IsPiece(a):
-                if self.Board.GetPiece(a).White == self.White:
-                    break
             if z[1] <= 7:
                 y.append(a)
             else:
@@ -43,9 +37,6 @@ class Rook(Piece):
         while True:
             z[0] -= 1
             a = Annotate(z[0],z[1])
-            if self.Board.IsPiece(a):
-                if self.Board.GetPiece(a).White == self.White:
-                    break
             if z[0] >= 0:
                 y.append(a)
             else:
@@ -56,9 +47,6 @@ class Rook(Piece):
         while True:
             z[0] += 1
             a = Annotate(z[0],z[1])
-            if self.Board.IsPiece(a):
-                if self.Board.GetPiece(a).White == self.White:
-                    break
             if z[0] <= 7:
                 y.append(a)
             else:

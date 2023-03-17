@@ -1,4 +1,4 @@
-from pieces import pawn, knight, queen, bishop, rook
+from pieces import pawn, knight, queen, bishop, rook, king
 from colorama import Fore, Back, Style
 from game.helpers import Annotate, UnAnnotate
 from string import ascii_lowercase
@@ -58,6 +58,13 @@ class Board():
             _Rook = rook.Rook(not ("0" in Location and Location != "70"), Annotate(y, x), self)
             self.GameBoard[x][y] = _Rook
             (self.Black if ("0" in Location and Location != "70") else self.White).append(_Rook)
+
+        #Add King
+        for Location in king.SpawnLocations:
+            x, y = int(Location[0]), int(Location[1])
+            _King = king.King(not "0" in Location, Annotate(y, x), self)
+            self.GameBoard[x][y] = _King
+            (self.Black if "0" in Location else self.White).append(_King)
 
     
     def DisplayBoard(self):
