@@ -7,13 +7,10 @@ Color = lambda c: Style.RESET_ALL + Style.BRIGHT + (Back.BLACK if Back.WHITE in 
 
 class Board():
     def __init__(self):
-        self.GameBoard = []
+        self.GameBoard = [["." for y in range(8)] for x in range(8)]
         self.White = []
         self.Black = []
         self.Dead = []
-        
-        for x in range(8):
-            self.GameBoard.append(["." for y in range(8)])     
 
     
     def CreateBoard(self):
@@ -91,9 +88,10 @@ class Board():
             if Piece.Location == Location:
                 return True
         return False
-
+    
     
     def GetPiece(self, Location):
-        for Piece in self.White + self.Black:
-            if Piece.Location == Location:
-                return Piece
+        if Location == None:
+            return False
+        x = UnAnnotate(Location)
+        return self.GameBoard[x[1]][x[0]]

@@ -5,8 +5,7 @@ SpawnLocations = ["01", "06", "71", "76"]
 
 class Knight(Piece):
     def __init__(self, White: bool, Location: str, Board):
-        self.Board = Board
-        Piece.__init__(self, White, Location, "n")
+        Piece.__init__(self, White, Location, "n", Board)
 
     
     def PossibleMoves(self) -> list:

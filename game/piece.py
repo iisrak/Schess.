@@ -12,12 +12,14 @@ Symbols = {
 
 
 class Piece(object):
-    def __init__(self, White: bool, Location: str, Initial: str):
+    def __init__(self, White: bool, Location: str, Initial: str, Board):
+        self.Board = Board
         self.Location = Location
         self.Origin = Location
         self.White = White
         self.Initial = Initial
         self.Symbol = (Fore.RED if self.White == True else Fore.BLUE) + Symbols[Initial]
+
 
     def Surroundings(self) -> list:
         y = UnAnnotate(self.Location)
@@ -36,6 +38,135 @@ class Piece(object):
         if not self.White:
             x.reverse()
         return x
+
+    
+    def HorizontalVertical(self) -> list:
+        y = []
+
+        #Up
+        z = UnAnnotate(self.Location)
+        while True:
+            z[1] -= 1
+            a = Annotate(z[0],z[1])
+            if z[1] >= 0:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        #Down
+        z = UnAnnotate(self.Location)
+        while True:
+            z[1] += 1
+            a = Annotate(z[0],z[1])
+            if z[1] <= 7:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+       #Left
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] -= 1
+            a = Annotate(z[0],z[1])
+            if z[0] >= 0:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        #Right
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] += 1
+            a = Annotate(z[0],z[1])
+            if z[0] <= 7:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        for x in y:
+            if x == self.Location:
+                y.remove(x)
+
+        return y
+    
+
+    def Diagonal(self) -> list:
+        y = []
+
+        #Diagonal (Up+Right)
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] += 1
+            z[1] -= 1
+            a = Annotate(z[0],z[1])
+            if z[0] <= 7 and z[1] >= 0:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break         
+
+        #Diagonal (Up+Left)
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] -= 1
+            z[1] -= 1
+            a = Annotate(z[0],z[1])
+            if z[0] >= 0 and z[1] >= 0:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        #Diagonal (Bottom+Right)
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] += 1
+            z[1] += 1
+            a = Annotate(z[0],z[1])
+            if z[0] <= 7 and z[1] <= 7:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        #Diagonal (Bottom+Left)
+        z = UnAnnotate(self.Location)
+        while True:
+            z[0] -= 1
+            z[1] += 1
+            a = Annotate(z[0],z[1])
+            if z[0] >= 0 and z[1] <= 7:
+                if self.Board.IsPiece(a):
+                    y.append(a)
+                    break
+                y.append(a)
+            else:
+                break
+
+        for x in y:
+            if x == self.Location:
+                y.remove(x)
+
+        return y 
+    
 
     def __str__(self):
         return self.Initial

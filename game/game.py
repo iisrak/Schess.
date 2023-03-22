@@ -4,24 +4,25 @@ class Game:
     def __init__(self, Board):
         self.Board = Board
         self.Turn = True
+        self.BKP = "" #Acronym for BlackKingPosition
+        self.WKP = "" #Acronym for WhiteKingPosition
 
 
     def Move(self, Location) -> bool:
         if len(Location) < 2 or len(Location) > 3:
             return False
-        elif len(Location) == 2:
-            _Location = "p" + Location
-        else:
-            _Location = Location
-            Location = Location[1]+Location[2]
+        
+        Initial = "p" if len(Location) == 2 else Location[0]
+        Location = Location if len(Location) == 2 else Location[1:]
         
         for Piece in (self.Board.White if self.Turn == True else self.Board.Black):
-            if not Piece.Initial in _Location: 
+            if Piece.Initial != Initial: 
                 continue 
             else:
                 if Location in Piece.PossibleMoves(): 
                     if self.Board.IsPiece(Location):
                         DeadPiece = self.Board.GetPiece(Location)
+                        
                         if DeadPiece.White == Piece.White:
                             return False 
 
@@ -35,9 +36,15 @@ class Game:
                     self.Board.GameBoard[newY][newX] = Piece
                     
                     Piece.Location = Location
-                    self.Turn = True if self.Turn == False else False
+                    self.Turn = not self.Turn                 
+
+                    
+
                     return True
         return False
 
-    """def IsKingChecked(self) -> bool:
-        for Piece in self.Board.White + self.Board"""
+
+    def IsKingChecked(self) -> bool:
+        for Piece in (self.Board.White if self.Turn else self.Board.Black):
+            if Piece.Location == (self.WKP if self.Turn else self.BKP):
+                pass

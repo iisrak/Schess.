@@ -5,57 +5,8 @@ SpawnLocations = ["00", "07", "70", "77"]
 
 class Rook(Piece):
     def __init__(self, White: bool, Location: str, Board):
-        self.Board = Board
-        Piece.__init__(self, White, Location, "r")
+        Piece.__init__(self, White, Location, "r", Board)
 
     
     def PossibleMoves(self) -> list:
-        y = [] 
-
-        #Up
-        z = UnAnnotate(self.Location)
-        while True:
-            z[1] -= 1
-            a = Annotate(z[0],z[1])
-            if z[1] >= 0:
-                y.append(a)
-            else:
-                break
-
-        #Down
-        z = UnAnnotate(self.Location)
-        while True:
-            z[1] += 1
-            a = Annotate(z[0],z[1])
-            if z[1] <= 7:
-                y.append(a)
-            else:
-                break
-
-        #Left
-        z = UnAnnotate(self.Location)
-        while True:
-            z[0] -= 1
-            a = Annotate(z[0],z[1])
-            if z[0] >= 0:
-                y.append(a)
-            else:
-                break
-
-        #Right
-        z = UnAnnotate(self.Location)
-        while True:
-            z[0] += 1
-            a = Annotate(z[0],z[1])
-            if z[0] <= 7:
-                y.append(a)
-            else:
-                break
-
-        for x in y:
-            if x == self.Location:
-                y.remove(x)
-        
-        return y
-
-        
+        return self.HorizontalVertical()
