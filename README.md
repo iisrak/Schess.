@@ -15,5 +15,3 @@ They blocked chess.com in school, I had to improvise. Hush I know there's other 
 - idk
 
 ![image](https://user-images.githubusercontent.com/61939474/225642504-dd5605bb-afff-4682-9f1f-c925e4f228c9.png)
-
-Laxion#9398
