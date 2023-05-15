@@ -16,3 +16,4 @@ if __name__ == "__main__":
         
         if not Game.Move(input(Style.RESET_ALL + "\n\nMove: ")):
             input("Invalid move. Press 'enter' try again.")
+            #e
