@@ -10,7 +10,9 @@ class Board():
         self.GameBoard = [["." for y in range(8)] for x in range(8)]
         self.White = []
         self.Black = []
-        self.Dead = []
+        self.Dead = [] 
+        self.BlackKing = None
+        self.WhiteKing = None
 
     
     def CreateBoard(self):
@@ -62,6 +64,11 @@ class Board():
             _King = king.King(not "0" in Location, Annotate(y, x), self)
             self.GameBoard[x][y] = _King
             (self.Black if "0" in Location else self.White).append(_King)
+
+            if _King.White:
+                self.WhiteKing = _King
+            else:
+                self.BlackKing = _King 
 
     
     def DisplayBoard(self):

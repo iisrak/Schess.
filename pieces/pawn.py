@@ -8,6 +8,7 @@ class Pawn(Piece):
     def PossibleMoves(self) -> list:
         x = UnAnnotate(self.Location)
         y = []
+        
         if self.Location == self.Origin:
             y = [Annotate(x[0], x[1]+1), Annotate(x[0], x[1]+2)] if not self.White else [Annotate(x[0], x[1]-1), Annotate(x[0], x[1]-2)]
 

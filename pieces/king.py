@@ -7,7 +7,26 @@ class King(Piece):
     def __init__(self, White: bool, Location: str, Board):
         Piece.__init__(self, White, Location, "k", Board)
 
+        self.Checked = False
+        self.MovesMade = []
+
+
     def PossibleMoves(self) -> list:
-        #x = UnAnnotate(self.Location)
+        y = self.Surroundings()
+        return y
+        """for Piece in (self.Board.White if self.White else self.Board.Black):
+            for Location in Piece.PossibleMoves():
+                if Location in y:
+                    y.remove(Location)
+
+        for z in y:
+            if z == None:
+                y.remove(z)"""
         
-        return self.Surroundings()
+
+
+    def LegalMoves(self) -> list:
+        y = []        
+
+        #for Piece in (self.Board.White if self.White else self.Board.Black):
+            

@@ -19,6 +19,7 @@ class Piece(object):
         self.White = White
         self.Initial = Initial
         self.Symbol = (Fore.RED if self.White == True else Fore.BLUE) + Symbols[Initial]
+        self.Pinned = False 
 
 
     def Surroundings(self) -> list:
@@ -37,6 +38,7 @@ class Piece(object):
         
         if not self.White:
             x.reverse()
+            
         return x
 
     
