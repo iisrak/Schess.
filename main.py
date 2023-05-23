@@ -7,7 +7,7 @@ Board = Board()
 Game = Game(Board)
 
 if __name__ == "__main__":
-    print("LaxionDeveloper on github.com and @LaxionDev on repl.it \n\n")
+    print("iisrak on github.com\n\n")
     Board.CreateBoard()
 
     while True:
@@ -16,4 +16,3 @@ if __name__ == "__main__":
         
         if not Game.Move(input(Style.RESET_ALL + "\n\nMove: ")):
             input("Invalid move. Press 'enter' try again.")
-            #e

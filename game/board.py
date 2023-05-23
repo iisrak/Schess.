@@ -81,6 +81,7 @@ class Board():
         for x in range(8):
             for y in range(8):
                 c = Color(c)
+                
                 if type(self.GameBoard[x][y]) != str:
                     print(c + self.GameBoard[x][y].Symbol + " ", end="")
                 else:

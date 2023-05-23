@@ -4,8 +4,8 @@ class Game:
     def __init__(self, Board):
         self.Board = Board
         self.Turn = True
-        self.BKP = "" #Acronym for BlackKingPosition
-        self.WKP = "" #Acronym for WhiteKingPosition
+        self.BKP = '' #Acronym for BlackKingPosition
+        self.WKP = '' #Acronym for WhiteKingPosition
         self.MovesMade = [] #For minimax in the future
 
 
@@ -13,10 +13,10 @@ class Game:
         if len(Location) < 2 or len(Location) > 3:
             return False
         
-        Initial = "p" if len(Location) == 2 else Location[0]
+        Initial = 'p' if len(Location) == 2 else Location[0]
         Location = Location if len(Location) == 2 else Location[1:]
         
-        if Initial == "k":
+        if Initial == 'k':
             (self.Board.WhiteKing if self.Turn else self.Board.BlackKing).Checked
 
         for Piece in (self.Board.White if self.Turn == True else self.Board.Black):
@@ -24,8 +24,8 @@ class Game:
                 continue 
             else:
                 if Location in Piece.PossibleMoves(): 
-                    if Piece.Pinned:
-                        return False
+                    """if Piece.Pinned:
+                        return False"""
 
                     if self.Board.IsPiece(Location):
                         DeadPiece = self.Board.GetPiece(Location)
@@ -41,7 +41,7 @@ class Game:
                     
                     self.MovesMade.append((Piece.Location, Location))
 
-                    self.Board.GameBoard[oldY][oldX] = "."
+                    self.Board.GameBoard[oldY][oldX] = '.'
                     self.Board.GameBoard[newY][newX] = Piece
                     
                     Piece.Location = Location
@@ -59,6 +59,6 @@ class Game:
         newX, newY = UnAnnotate(x[1])
 
         self.Board.GameBoard[oldY][oldX] = Piece
-        self.Board.GameBoard[newY][newX] = "."
+        self.Board.GameBoard[newY][newX] = '.'
 
         self.MovesMade.remove(x)

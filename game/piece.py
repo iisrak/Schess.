@@ -18,24 +18,24 @@ class Piece(object):
         self.Origin = Location
         self.White = White
         self.Initial = Initial
-        self.Symbol = (Fore.RED if self.White == True else Fore.BLUE) + Symbols[Initial]
+        self.Symbol = (Fore.RED if self.White else Fore.BLUE) + Symbols[Initial]
         self.Pinned = False 
 
 
     def Surroundings(self) -> list:
         y = UnAnnotate(self.Location)
         
-        tl = Annotate(y[0]-1,y[1]-1) if not "a" in self.Location or "8" in self.Location else None
-        tr = Annotate(y[0]+1, y[1]-1) if not "h" in self.Location or "8" in self.Location else None
-        bl = Annotate(y[0]-1, y[1]+1) if not "a" in self.Location or "1" in self.Location else None
-        br = Annotate(y[0]+1, y[1]+1) if not "1" in self.Location or "h" in self.Location else None
-        t = Annotate(y[0], y[1]-1) if not "8" in self.Location else None
-        l = Annotate(y[0]-1, y[1]) if not "a" in self.Location else None
-        r = Annotate(y[0]+1, y[1]) if not "h" in self.Location else None
-        b = Annotate(y[0], y[1]+1) if not "1" in self.Location else None
-
-        x = [tl,t,tr,l,r,bl,b,br]
-        
+        x = [
+            Annotate(y[0]-1,y[1]-1) if all([x in self.Location for x in ["a", "8"]]) else None,
+            Annotate(y[0]+1, y[1]-1) if all([x in self.Location for x in ["h", "8"]]) else None,
+            Annotate(y[0]-1, y[1]+1) if all([x in self.Location for x in ["a", "1"]]) else None,
+            Annotate(y[0]+1, y[1]+1) if all([x in self.Location for x in ["h", "1"]])  else None,
+            None if "8" in self.Location else Annotate(y[0], y[1]-1),
+            None if "a" in self.Location else Annotate(y[0]-1, y[1]),
+            None if "h" in self.Location else Annotate(y[0]+1, y[1]),
+            None if "1" in self.Location else Annotate(y[0], y[1]+1),
+        ]
+            
         if not self.White:
             x.reverse()
             

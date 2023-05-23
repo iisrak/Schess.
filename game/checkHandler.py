@@ -1,6 +1,5 @@
 from events import Events
 
-
 class CheckHandler():
 
     def __init__(self):
