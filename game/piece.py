@@ -26,13 +26,13 @@ class Piece(object):
         y = UnAnnotate(self.Location)
         
         x = [
-            Annotate(y[0]-1,y[1]-1) if all([x in self.Location for x in ["a", "8"]]) else None,
-            Annotate(y[0]+1, y[1]-1) if all([x in self.Location for x in ["h", "8"]]) else None,
-            Annotate(y[0]-1, y[1]+1) if all([x in self.Location for x in ["a", "1"]]) else None,
-            Annotate(y[0]+1, y[1]+1) if all([x in self.Location for x in ["h", "1"]])  else None,
+            Annotate(y[0]-1, y[1]-1) if all([not x in self.Location for x in ["a", "8"]]) else None,
             None if "8" in self.Location else Annotate(y[0], y[1]-1),
+            Annotate(y[0]+1, y[1]-1) if all([not x in self.Location for x in ["h", "8"]]) else None,
             None if "a" in self.Location else Annotate(y[0]-1, y[1]),
+            Annotate(y[0]-1, y[1]+1) if all([not x in self.Location for x in ["a", "1"]]) else None,
             None if "h" in self.Location else Annotate(y[0]+1, y[1]),
+            Annotate(y[0]+1, y[1]+1) if all([not x in self.Location for x in ["h", "1"]]) else None,
             None if "1" in self.Location else Annotate(y[0], y[1]+1),
         ]
             
@@ -171,4 +171,4 @@ class Piece(object):
     
 
     def __str__(self):
-        return self.Initial
+        return self.Symbol
