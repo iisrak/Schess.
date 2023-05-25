@@ -19,7 +19,7 @@ class Pawn(Piece):
             if _ != None and self.Board.IsPiece(_): # Check if there's a piece there
                 x.append(_) # Append to possible moves if true
 
-        if not self.Board.IsPiece(z[1]): # Check if there's not a piece in front of pawn
+        if z[1] != None and not self.Board.IsPiece(z[1]): # Check if there's not a piece in front of pawn
             x.append(z[1]) # Append to possible moves if true
 
         return x

@@ -77,7 +77,7 @@ class Board():
         for i in range(8):
             for Item in self.GameBoard[i]: # Loops over all the items in the board
                 print(Highlight() + str(Item), end=" ") # Output the items
-            print(Highlight() + Style.RESET_ALL + f" {str(i+1)}") # Output the numbers
+            print(Highlight() + Style.RESET_ALL + f" {str(8-i)}") # Output the numbers
 
     def IsPiece(self, Location) -> bool:
         "Returns boolean on whether a piece exists in a specific location."
