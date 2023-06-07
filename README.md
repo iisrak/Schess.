@@ -14,4 +14,7 @@ They blocked chess.com in school, I had to improvise. Hush I know there's other 
 - Single Player (bot will be made using minimax, hopefully.)
 - Maybe a few more things..?
 
+# How to play:
+Use chess notations. Such as e4 will move the appropriate pawn to that location. Or qe4 will move the queen to that location. At the moment you can't specify exactly what piece you're trying to move, but I'm sure I'll come up with something eventually.
+
 ![image](https://user-images.githubusercontent.com/61939474/225642504-dd5605bb-afff-4682-9f1f-c925e4f228c9.png)
