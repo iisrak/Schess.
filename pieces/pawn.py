@@ -10,6 +10,7 @@ class Pawn(Piece):
         x = [] # Array stores all the possible moves
         y = UnAnnotate(self.Location) # Gets co-ordinates for location
         z = Piece.Surroundings(self) # Array stores all surroundings of the piece (N, NE, E, SE, S, SW, W, NW)
+        print(z)
         t = Annotate(y[0], (y[1]+2 if not self.White else y[1]-2)) # Two steps forward, changes depending on color
 
         if self.Location == self.Origin and not self.Board.IsPiece(t): # Checks if it's in the original position, and if there's not a piece two steps forward
@@ -22,6 +23,7 @@ class Pawn(Piece):
         if z[1] != None and not self.Board.IsPiece(z[1]): # Check if there's not a piece in front of pawn
             x.append(z[1]) # Append to possible moves if true
 
+        print(x);input()
         return x
 
     # TO DO: PROMOTION
