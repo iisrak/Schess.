@@ -67,7 +67,7 @@ class Board():
             if _King.White: # Checks if white king
                 self.WhiteKing = _King # Set variable accordingly
             else: 
-                self.BlackKing = _King 
+                self.BlackKing = _King # Set variable accordingly
   
     def DisplayBoard(self):
         "Display the game board in the terminal."
@@ -81,12 +81,16 @@ class Board():
 
     def IsPiece(self, Location) -> bool:
         "Returns boolean on whether a piece exists in a specific location."
-        x = UnAnnotate(Location)
-        return type(self.GameBoard[x[1]][x[0]]) != str
+        try:
+            x = UnAnnotate(Location) # Get coordinates 
+            return type(self.GameBoard[x[1]][x[0]]) != str # Return whether the value is a string or not, that way we're able to identify if it's a piece or not
+        except IndexError:
+            return False
     
     def GetPiece(self, Location):
         "Returns piece in specific location."
-        if Location == None:
-            return False
-        x = UnAnnotate(Location)
-        return self.GameBoard[x[1]][x[0]]
+        try:
+            x = UnAnnotate(Location) # Get coordinates of piece
+            return self.GameBoard[x[1]][x[0]] # Return piece 
+        except TypeError:
+            return False 
