@@ -12,6 +12,20 @@ Symbols = {
     "p": "♟",
 }
 
+HV = {
+    0: (1, -1),
+    1: (1, 1),
+    2: (0, -1),
+    3: (0, 1)
+} 
+
+D = {
+    0:(-1, 1),
+    1:(-1, -1), 
+    2:(1, 1), 
+    3:(1, -1)
+}
+
 class Piece(object):
     def __init__(self, White: bool, Location: str, Initial: str, Board):
         self.Board = Board
@@ -41,22 +55,15 @@ class Piece(object):
             x.reverse()
             
         return x
-
     
     def HorizontalVertical(self) -> list:
         "Return horizontal and vertical moves for pieces such as the queen and rook."        
         y = []
-        d = {
-            0:(1, -1),
-            1:(1, 1), 
-            2:(0, -1), 
-            3:(0, 1)
-        }
 
         for i in range(4):
             coord = UnAnnotate(self.Location)
             while True:
-                coord[d[i][0]] += d[i][1]       
+                coord[HV[i][0]] += HV[i][1]       
                 a = Annotate(coord[0], coord[1])
                 if coord[0] >= 0 and coord[0] <= 7 and coord[1] >= 0 and coord[1] <= 7:
                     y.append(a) 
@@ -65,23 +72,17 @@ class Piece(object):
                     continue
                 break
                                           
-        return [x for x in y if x != self.Location] # Fun fact this function when it was first made was around 70 lines long :), and now it's less than 20
+        return [x for x in y if x != self.Location] 
 
     def Diagonal(self) -> list:
         "Return diagonal moves for pieces such as the queen and bishop."        
         y = []
-        d = {
-            0:(-1, 1),
-            1:(-1, -1), 
-            2:(1, 1), 
-            3:(1, -1)
-        }
 
         for i in range(4):
             coord = UnAnnotate(self.Location)
             while True:
-                coord[0] += d[i][0]
-                coord[1] += d[i][1]   
+                coord[0] += D[i][0]
+                coord[1] += D[i][1]   
                 a = Annotate(coord[0], coord[1])
                 if coord[0] >= 0 and coord[0] <= 7 and coord[1] >= 0 and coord[1] <= 7:
                     y.append(a) 

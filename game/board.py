@@ -5,13 +5,10 @@ from colorama import Style
 
 class Board():
     def __init__(self):
-        self.GameBoard = [["." for _ in range(8)] for _ in range(8)] # The gameboard, being a 2D array
+        self.GameBoard = [["." for _ in range(8)] for _ in range(8)] # The gameboard which is a 2D array
         self.White = [] # Array for all white pieces
         self.Black = [] # Array for all black pieces
         self.Dead = []  # Array for any dead pieces
-        self.BlackKing = None # Black king piece
-        self.WhiteKing = None # White king piece
-
     
     def CreateBoard(self):
         "Creates and initialises the board as well as the pieces."

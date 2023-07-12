@@ -8,7 +8,7 @@ def UnAnnotate(Annotation: str) -> list:
     return [ascii_lowercase.index(Annotation[0]), 8-int(Annotation[1])] # Return unannotated (coordinates) version
 
 def Annotate(X: int, Y: int) -> str:
-    "Get annotation."
+    "Get board annotation."
     return ascii_lowercase[X]+str((8-Y)) # Return annotated version 
 
 def Highlight() -> str:
