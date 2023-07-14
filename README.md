@@ -5,13 +5,12 @@ I made chess, in python, all from scratch. Only module that I really used was co
 They blocked chess.com in school, I had to improvise. And it's also for my school course work.
 
 # To do:
-- King piece
 - Check / Pin system
 - Pawn en passant
 - Pawn promotion
-- Proper interface using HTML / CSS / JS
+- Optional interface using HTML / CSS / JS
 - Multiplayer
-- Single Player (bot will be made using minimax, hopefully.)
+- Single Player (minimax n alpha beta pruning)
 - Maybe a few more things..?
 
 # How to play:
