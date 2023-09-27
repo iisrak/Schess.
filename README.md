@@ -2,7 +2,7 @@
 I made chess, in python, all from scratch. Only module that I really used was colorama for, well, self explanatory.  
 
 # Why?
-They blocked chess.com in school, I had to improvise. And it's also for my school course work.
+They blocked chess.com in school, I had to improvise.
 
 # To do:
 - Check / Pin system
